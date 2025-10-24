@@ -6,7 +6,7 @@
 #    By: kpanfero <kpanfero@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/17 12:08:15 by kpanfero          #+#    #+#              #
-#    Updated: 2025/10/17 16:58:47 by kpanfero         ###   ########.fr        #
+#    Updated: 2025/10/24 10:59:21 by kpanfero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,31 +21,23 @@ SRC = ft_printf.c		\
 	  ft_puthex.c		\
 	  ft_putptr.c		\
 
-BONUS = printf.c_bonus  \
+
 
 OBJ = $(SRC:.c=.o)
 B_OBJ = $(BONUS:.c=.o)
 
 CC = cc
-LIBFT_DIR = libft
-LIBFT =  $(LIBFT_DIR)/libft.a
-CFLAGS = -Wall -Wextra -Werror -I../libft
+CFLAGS = -Wall -Wextra -Werror
 
-.PHONY: all bonus clean fclean re
+.PHONY: all clean fclean re
 
-all: $(LIBFT) $(NAME)
+all: $(NAME)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJ)
-	ar rcs $(NAME) $(OBJ) $(LIBFT)
-
-$(LIBFT):
-	make -C $(LIBFT_DIR)
-
-#bonus: $(OBJ) $(B_OBJ)
-#	ar rcs $(OBJ) $(B_OBJ)
+	ar rcs $(NAME) $(OBJ)
 
 clean: 
 	rm -f $(OBJ)
@@ -55,13 +47,10 @@ fclean: clean
 
 re: fclean all
 
-
-
-
 TEST = test_printf
 
 test: $(NAME) main.o
-	$(CC) $(CFLAGS) main.o -L. -lftprintf -Llibft -lft -o $(TEST)
+	$(CC) $(CFLAGS) main.o -L. -lftprintf -o $(TEST)
 
 main.o: main.c
 	$(CC) $(CFLAGS) -c main.c -o main.o

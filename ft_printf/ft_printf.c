@@ -6,14 +6,11 @@
 /*   By: kpanfero <kpanfero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 12:21:54 by kpanfero          #+#    #+#             */
-/*   Updated: 2025/10/17 16:18:39 by kpanfero         ###   ########.fr       */
+/*   Updated: 2025/10/24 10:57:46 by kpanfero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "ft_printf.h"
-#include <stdarg.h>
-#include <unistd.h>
 
 int	ft_printf(const char *format, ...)
 {
